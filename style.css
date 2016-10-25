@@ -43,12 +43,7 @@ h1{
   height: 40px;
   border-bottom: 1px solid #888;
 }
-.nav ul li ul {
-  list-style:none;
-}
-.nav ul li ul li {
-  font-size: 1em;
-}
+
  
 .nav a {
   text-decoration: none;
