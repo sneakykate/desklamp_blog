@@ -3,7 +3,6 @@ const mongoose = require('mongoose');
 const bodyParser = require('body-parser');
 const path = require('path');
 
-const userController = require('./server/userController');
 const postController = require('./server/postController');
 
 const app = express();
