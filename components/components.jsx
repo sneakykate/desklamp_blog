@@ -12,39 +12,35 @@ const InputName = ({ updateUser, User }) => {
     <div>
       <form onSubmit={updateUser}>
         <input type="text" placeholder="Enter your Name" />
-        <button type="submit">Submit</button>
+        <button type="submit" className="myButton">Submit</button>
       </form>
     </div>
   );
 };
 
-const Page1 = ({ state, powers }) => {
+const NestedRoute = ({ state, powers }) => {
   return (
-    <div>
-      <ul>
-        <li>
-          Enter a username below.
-        </li>
-      </ul>
+    <div className="home">
+      <h1>Enter a username below.</h1>
       <InputName User={state.UserName} updateUser={powers.updateUser} />
     </div>
   );
 };
 
-const Page2 = ({ state }) => {
+const ShowState = ({ state }) => {
   return (
-    <div className="page2">
-      <h1>Page2</h1>
+    <div className="home">
+      <h1>Show State</h1>
       <p>Username is {state.UserName || "(enter a userName in the form on Page 1)"}</p>
+      <p>State is: <code>{JSON.stringify(state).replace(/\"/g,'')}</code></p>
     </div>
   );
 };
 
-const Page3 = ({ state }) => {
+const Posts = ({ state }) => {
   return (
-    <div className="page3">
-      <h1>Page3</h1>
-      <h4>Good thing we loaded these posts already.</h4>
+    <div className="postPage">
+      <h1>Got Data</h1>
       {state.posts.map((message) => {
         return (
         [
@@ -58,4 +54,4 @@ const Page3 = ({ state }) => {
   );
 };
 
-export { Home, InputName, Page2, Page1, Page3 };
+export { Home, InputName, ShowState, NestedRoute, Posts };

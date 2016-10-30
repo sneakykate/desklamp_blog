@@ -1,8 +1,13 @@
 html, body{
   height: 100%;
+  margin:0;
+}
+body {
+  background-image: -webkit-linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-image: linear-gradient(top, #f2f2f2, #e6e6e6);
 }
 
-html, body, div, h1, h2, h3, p{
+html, body, div, h1, h2, h3, p, li, button{
   font-family: 'Raleway', sans-serif;
 }
 
@@ -10,26 +15,29 @@ h1{
   text-align: center;
   padding:0px;
   margin:0;
+  font-size: 1.4em;
 }
 .posts{
   padding: 10px;
 }
 
 .home{
-   background: url(http://images.purehome.com/media/catalog/product/cache/1/image/9df78eab33525d08d6e5fb8d27136e95/f/r/fraiser-vintage-accordian-desk-lamp.png) no-repeat center right fixed; 
-  -webkit-background-size: cover;
-  -moz-background-size: cover;
-  -o-background-size: cover;
-  background-size: auto 100%;
-  height: 1200px;
-  font-size: 2em;
-  padding: 200px;
+  height: 1400px;
+  /*font-size: 2em;*/
+  padding: 80px;
+}
+
+.postPage{
+  padding: 80px;
+  height: 100%;
 }
 .nav{
   margin-bottom:0px;
 }
 
 .nav ul {
+  display:flex;
+  justify-content: flex-start;
   list-style: none;
   background-color: #444;
   text-align: center;
@@ -37,14 +45,12 @@ h1{
   margin: 0;
 }
 .nav li {
-  font-family: 'Oswald', sans-serif;
-  font-size: 1.1em;
-  line-height: 40px;
-  height: 40px;
+  font-size: 1em;
+  /*line-height: 38px;
+  height: 38px;*/
   border-bottom: 1px solid #888;
 }
 
- 
 .nav a {
   text-decoration: none;
   color: #fff;
@@ -61,14 +67,25 @@ h1{
   color: #444;
   cursor: default;
 }
+
+.navlogo {
+  margin-bottom: -40px;
+}
+.logo {
+  background-color: #202729;
+  border-radius: 40px;
+  width: 80px;
+  height: 80px;
+  margin-bottom:0px;
+}
  
 @media screen and (min-width: 600px) {
   .nav li {
-    width: 120px;
+    width: 110px;
     border-bottom: none;
-    height: 50px;
-    line-height: 50px;
-    font-size: 1.4em;
+    height: 44px;
+    line-height: 44px;
+    font-size: 1.1em;
   }
  
   /* Option 1 - Display Inline */
@@ -95,15 +112,9 @@ body *::before {
   box-sizing: border-box;
 }
 
-body {
-  background-image: -webkit-linear-gradient(top, #f2f2f2, #e6e6e6);
-  background-image: linear-gradient(top, #f2f2f2, #e6e6e6);
-}
-
-h1 {
-  font-size: 2rem;
-  text-align: center;
-  margin: 0 0 2em;
+form {
+  width: 50%;
+  margin:20px auto;
 }
 
 .container {
@@ -435,55 +446,24 @@ fieldset {
   left: 0;
   width: 100%;
 }
-
-.button {
-  position: relative;
-  background: currentColor;
-  border: 1px solid currentColor;
-  font-size: 1.1rem;
-  color: #4f93ce;
-  margin: 3rem 0;
-  padding: 0.75rem 3rem;
-  cursor: pointer;
-  -webkit-transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
-  transition: background-color 0.28s ease, color 0.28s ease, box-shadow 0.28s ease;
-  overflow: hidden;
-  box-shadow: 0 2px 2px 0 rgba(0, 0, 0, 0.14), 0 3px 1px -2px rgba(0, 0, 0, 0.2), 0 1px 5px 0 rgba(0, 0, 0, 0.12);
-}
-.button span {
-  color: #fff;
-  position: relative;
-  z-index: 1;
-}
-.button::before {
-  content: '';
-  position: absolute;
-  background: #071017;
-  border: 50vh solid #1d4567;
-  width: 30vh;
-  height: 30vh;
-  border-radius: 50%;
-  display: block;
-  top: 50%;
-  left: 50%;
-  z-index: 0;
-  opacity: 1;
-  -webkit-transform: translate(-50%, -50%) scale(0);
-          transform: translate(-50%, -50%) scale(0);
-}
-.button:hover {
-  color: #337ab7;
-  box-shadow: 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12), 0 3px 5px -1px rgba(0, 0, 0, 0.2);
-}
-.button:active::before, .button:focus::before {
-  -webkit-transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-  transition: opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-  transition: transform 1.12s ease, opacity 0.28s ease 0.364s;
-  transition: transform 1.12s ease, opacity 0.28s ease 0.364s, -webkit-transform 1.12s ease;
-  -webkit-transform: translate(-50%, -50%) scale(1);
-          transform: translate(-50%, -50%) scale(1);
-  opacity: 0;
-}
-.button:focus {
+  .myButton {
+	background: #3498db;
+  background-image: -webkit-linear-gradient(top, #3498db, #2980b9);
+  background-image: -moz-linear-gradient(top, #3498db, #2980b9);
+  background-image: -ms-linear-gradient(top, #3498db, #2980b9);
+  background-image: -o-linear-gradient(top, #3498db, #2980b9);
+  background-image: linear-gradient(to bottom, #3498db, #2980b9);
+  -webkit-border-radius: 2;
+  -moz-border-radius: 2;
+  border-radius: 2px;
+  border-style:none;
+  color: #ffffff;
+  margin: 6px;
+  padding: 6px 6px 6px 6px;
+  text-decoration: none;
   outline: none;
+}
+.myButton:hover {
+  background: #2d6f96;
+  text-decoration: none;
 }
