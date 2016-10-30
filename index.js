@@ -1,9 +1,9 @@
 // import statements
-  import React from 'react';
-  import ReactDOM from 'react-dom';
-  import { Container, Desklamp } from 'desklamp';
-  import { Home, NestedRoute, ShowState, Posts } from './components/components';
-  import Nav from './components/Nav';
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { Container, Desklamp } from 'desklamp';
+import { Home, NestedRoute, ShowState, Posts } from './components/components';
+import Nav from './components/Nav';
 
 ReactDOM.render((
   <Container>
@@ -27,8 +27,8 @@ const funcs = {
     e.preventDefault();
     const event = e.nativeEvent;
     const newUser = event.target[0].value;
-    Desklamp.changeView( 'showstate', {
-       UserName: newUser, 
+    Desklamp.changeView('showstate', {
+      UserName: newUser,
     });
   },
   getPosts: () => {
@@ -39,5 +39,3 @@ const funcs = {
 };
 
 Desklamp.on(initState, funcs, Nav);
-
-<Nav />
