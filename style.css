@@ -1,10 +1,7 @@
 html, body{
   height: 100%;
   margin:0;
-}
-body {
-  background-image: -webkit-linear-gradient(top, #f2f2f2, #e6e6e6);
-  background-image: linear-gradient(top, #f2f2f2, #e6e6e6);
+  background-color: #e6e6e6;
 }
 
 html, body, div, h1, h2, h3, p, li, button{
@@ -18,8 +15,45 @@ h1{
   font-size: 1.4em;
 }
 .posts{
-  padding: 10px;
+  padding: 12px 10px;
+  background-color: #eee;
+  margin: 10px;
+  border-radius: 10px;
+  /*text-align: center;*/
 }
+.posts p {
+  font-size: .7em;
+  text-align: center;
+  margin-top: 10px;
+ 
+}
+.posts h4 {
+  margin: 0;
+  float: left;
+}
+
+.posts span {
+  font-size: .5em;
+  margin-left: 10px;
+  /*float: left;*/
+  display: inline-block
+}
+
+.postBox {
+  width: 40%;
+  margin: 0 auto;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+}
+.homeBox {
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 20px;
+  background-color: white;
+}
+
 
 .home{
   height: 1400px;
@@ -59,7 +93,7 @@ h1{
 }
  
 .nav a:hover {
-  background-color: #005f5f;
+  background-color: #6A829F;
 }
  
 .nav a.active {
@@ -69,7 +103,8 @@ h1{
 }
 
 .navlogo {
-  margin-bottom: -40px;
+  margin-bottom: -24px;
+  margin-left: 5px;
 }
 .logo {
   background-color: #202729;
@@ -83,9 +118,9 @@ h1{
   .nav li {
     width: 110px;
     border-bottom: none;
-    height: 44px;
-    line-height: 44px;
-    font-size: 1.1em;
+    height: 80px;
+    line-height: 80px;
+    font-size: 1.3em;
   }
  
   /* Option 1 - Display Inline */
@@ -464,19 +499,54 @@ fieldset {
   outline: none;
 }
 .myButton:hover {
-  background: #2d6f96;
+  background: #6A829F;
   text-decoration: none;
+}
+
+/* State Code Snippets JSON styles */
+hr {
+  border-color: #000;
 }
 
 .display{
   float: right;
   padding: 3%;
-  background-color: white;
+  position: absolute;
+  top: 25px;
+  right:25px;
+  background: #FAD77F;
+  opacity: .9;
   min-width: 200px;
   min-height: 200px;
+  max-width: 280px;
+  box-shadow: -5px 5px 20px #818FA8;
+  
 }
 
 .func{
-  font-size: .75em;
-  margin-left: 30%;
+  font-size: .7em;
+  margin-left: 10%;
+  color: #6A829F;
 }
+.postStyle{
+  font-size: .7em;
+  margin-left: 10%;
+  color: #6A829F;
+}
+
+pre {
+   background-color: ghostwhite;
+   border: 1px solid silver;
+   padding: 10px 20px;
+   margin: 20px; 
+   }
+.json-key {
+   color: brown;
+   }
+.json-value {
+   color: navy;
+   }
+.json-string {
+   color: olive;
+   }
+

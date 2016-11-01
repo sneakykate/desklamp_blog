@@ -9,7 +9,7 @@ const Nav = ({ state, powers }) => (
       <li > <div className="logo"><img src="http://www.desklamp.io/assets/lamp.png" width="60px" className="navlogo" /></div></li>
       <li><Link view={'/home'} tag={'Home'} /></li>
       <li><Link view={'/home/nestedroute'} tag={'Nested'} /></li>
-      <li><Link view={'/showstate'} tag={'ShowState'} /></li>
+      <li><Link view={'/showuser'} tag={'ShowUser'} /></li>
       <li><AsyncLink view={'/posts'} tag={'Posts'} func={powers.getPosts} /></li>
     </ul>
     <StateDisplay state={state} powers={powers} />

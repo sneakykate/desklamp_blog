@@ -1,4 +1,5 @@
 import React from 'react';
+import {library} from './helper';
 
 const Home = () => {
   return (
@@ -27,12 +28,14 @@ const NestedRoute = ({ state, powers }) => {
   );
 };
 
-const ShowState = ({ state }) => {
+const ShowUser = ({ state }) => {
   return (
     <div className="home">
-      <h1>Show State</h1>
-      <p>Username is {state.UserName || "(enter a userName in the form on Page 1)"}</p>
-      <p>State is: <code>{JSON.stringify(state).replace(/\"/g,'')}</code></p>
+      <div className="homeBox">
+        <h1>Show User</h1>
+        <p>Hi! { state.UserName || "(Enter a userName in the form on Page 1)"}</p>
+        <img src="http://localhost:3000/jared.jpg" width="400px"/>
+      </div>
     </div>
   );
 };
@@ -40,27 +43,41 @@ const ShowState = ({ state }) => {
 const Posts = ({ state }) => {
   return (
     <div className="postPage">
-      <h1>Got Data</h1>
-      {state.posts.map((message) => {
-        return (
-        [
-          <div className="posts">
-            <h3> {message.title}</h3>
-            <div>{message.body}</div>
-          </div>,
-        ]);
-      })}
+      <div className="postBox">
+      <h1> Posts </h1>
+        {state.posts.map((message) => {
+          return (
+          [
+            <div className="posts">
+              <h4> {message.title}</h4>
+              <span>~ {message.user}</span>
+              <p>{message.body} </p>
+              
+              
+            </div>,
+          ]);
+        })}
+      </div>
     </div>
   );
 };
 
-const StateDisplay = ({ state, powers }) => {
+
+const StateDisplay = ({ state, powers }) => { 
+  const Postcode = library.json.prettyPrint( JSON.stringify(state.posts) || {});
   return (
     <div className="display">
-      <p>UserName: </p>
-      <p className="func">{state.UserName}</p>
+      <h4>Application State Tool</h4>
+      <hr/>
+      <p>UserName: <span className="func">{state.UserName}</span> </p> 
+      
       <p>Posts: </p>
-      <p className="func">{JSON.stringify(state.posts)}</p>
+      {(state.posts).map((post) => {
+        return (
+          <p className="postStyle">{library.json.prettyPrint(JSON.stringify(post)).replace(/\"/g, "")}</p>
+        );
+      })}  
+    
       <p>Powers: </p>
       {Object.keys(powers).map((func) => {
         return (
@@ -71,7 +88,9 @@ const StateDisplay = ({ state, powers }) => {
   );
 };
 
-export { Home, InputName, ShowState, NestedRoute, Posts, StateDisplay };
-
 
 // <p>Powers: <code>{powers}</code></p>
+
+
+
+export { Home, InputName, ShowUser, NestedRoute, Posts, StateDisplay };

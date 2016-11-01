@@ -2,7 +2,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Container, Desklamp } from 'desklamp';
-import { Home, NestedRoute, ShowState, Posts } from './components/components';
+import { Home, NestedRoute, ShowUser, Posts } from './components/components';
 import Nav from './components/Nav';
 
 ReactDOM.render((
@@ -10,7 +10,7 @@ ReactDOM.render((
     <Home>
       <NestedRoute />
     </Home>
-    <ShowState />
+    <ShowUser />
     <Posts />
   </Container>
 ), document.getElementById('app'));
@@ -27,7 +27,7 @@ const funcs = {
     e.preventDefault();
     const event = e.nativeEvent;
     const newUser = event.target[0].value;
-    Desklamp.changeView('showstate', {
+    Desklamp.changeView('showuser', {
       UserName: newUser,
     });
   },
