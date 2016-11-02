@@ -4,7 +4,10 @@ import {library} from './helper';
 const Home = () => {
   return (
     <div className="home">
-      <h1>Welcome to the home page</h1>
+      <h1>Welcome to the home page!</h1>
+      <div className="homeLamp">
+        <img src="http://localhost:3000/desk-lamp.png" width="200px"/>
+      </div>
     </div>
   );
 };

@@ -40,7 +40,7 @@ h1{
 }
 
 .postBox {
-  width: 40%;
+  width: 45%;
   margin: 0 auto;
   padding-top: 20px;
   padding-bottom: 20px;
@@ -59,6 +59,27 @@ h1{
   height: 1400px;
   /*font-size: 2em;*/
   padding: 80px;
+  width: 60%;
+  margin: 0 auto;
+  padding: 20px;
+  padding-bottom: 20px;
+  background-color: #6A829F;
+
+}
+
+.home h1 {
+  font-size: 2em;
+  color: white;
+}
+.home img {
+  
+  width: 200px;
+  margin: 0 auto;
+}
+
+.homeLamp {
+  width: 200px;
+  margin: 20px auto;
 }
 
 .postPage{
