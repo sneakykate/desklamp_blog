@@ -58,7 +58,7 @@
 
 	var _components = __webpack_require__(173);
 
-	var _Nav = __webpack_require__(174);
+	var _Nav = __webpack_require__(175);
 
 	var _Nav2 = _interopRequireDefault(_Nav);
 
@@ -70,13 +70,14 @@
 	  _react2.default.createElement(
 	    _components.Home,
 	    null,
-	    _react2.default.createElement(_components.Page1, null)
+	    _react2.default.createElement(_components.NestedRoute, null)
 	  ),
-	  _react2.default.createElement(_components.Page2, null),
-	  _react2.default.createElement(_components.Page3, null)
-	), document.getElementById('app'));
+	  _react2.default.createElement(_components.ShowUser, null),
+	  _react2.default.createElement(_components.Posts, null)
+	), document.getElementById('app')); // import statements
 
-	// Desklamp.defaultRoute('page1');
+
+	_desklamp.Desklamp.defaultRoute('/home');
 
 	var initState = {
 	  UserName: '',
@@ -88,13 +89,13 @@
 	    e.preventDefault();
 	    var event = e.nativeEvent;
 	    var newUser = event.target[0].value;
-	    _desklamp.Desklamp.changeView('page2', {
+	    _desklamp.Desklamp.changeView('showuser', {
 	      UserName: newUser
 	    });
 	  },
 	  getPosts: function getPosts() {
 	    $.get('http://localhost:3000/posts', function (data) {
-	      _desklamp.Desklamp.changeView('page2', { posts: data });
+	      _desklamp.Desklamp.changeView('posts', { posts: data });
 	    });
 	  }
 	};
@@ -21816,27 +21817,34 @@
 /* 173 */
 /***/ function(module, exports, __webpack_require__) {
 
-	"use strict";
+	'use strict';
 
 	Object.defineProperty(exports, "__esModule", {
 	  value: true
 	});
-	exports.Page3 = exports.Page1 = exports.Page2 = exports.InputName = exports.Home = undefined;
+	exports.StateDisplay = exports.Posts = exports.NestedRoute = exports.ShowUser = exports.InputName = exports.Home = undefined;
 
 	var _react = __webpack_require__(1);
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _helper = __webpack_require__(174);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Home = function Home() {
 	  return _react2.default.createElement(
-	    "div",
-	    { className: "home" },
+	    'div',
+	    { className: 'home' },
 	    _react2.default.createElement(
-	      "h1",
+	      'h1',
 	      null,
-	      "Welcome to the home page"
+	      'Welcome to the home page!'
+	    ),
+	    _react2.default.createElement(
+	      'div',
+	      { className: 'homeLamp' },
+	      _react2.default.createElement('img', { src: 'http://localhost:3000/desk-lamp.png', width: '200px' })
 	    )
 	  );
 	};
@@ -21845,107 +21853,165 @@
 	  var User = _ref.User;
 
 	  return _react2.default.createElement(
-	    "div",
+	    'div',
 	    null,
 	    _react2.default.createElement(
-	      "form",
+	      'form',
 	      { onSubmit: updateUser },
-	      _react2.default.createElement("input", { type: "text", placeholder: "Enter your Name" }),
+	      _react2.default.createElement('input', { type: 'text', placeholder: 'Enter your Name' }),
 	      _react2.default.createElement(
-	        "button",
-	        { type: "submit" },
-	        "Submit"
+	        'button',
+	        { type: 'submit', className: 'myButton' },
+	        'Submit'
 	      )
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      User
 	    )
 	  );
 	};
 
-	var Page1 = function Page1(_ref2) {
+	var NestedRoute = function NestedRoute(_ref2) {
 	  var state = _ref2.state;
 	  var powers = _ref2.powers;
 
 	  return _react2.default.createElement(
-	    "div",
-	    null,
+	    'div',
+	    { className: 'home' },
 	    _react2.default.createElement(
-	      "ul",
+	      'h1',
 	      null,
-	      _react2.default.createElement(
-	        "li",
-	        null,
-	        "List Item."
-	      )
+	      'Enter a username below.'
 	    ),
 	    _react2.default.createElement(InputName, { User: state.UserName, updateUser: powers.updateUser })
 	  );
 	};
 
-	var Page2 = function Page2(_ref3) {
+	var ShowUser = function ShowUser(_ref3) {
 	  var state = _ref3.state;
 
 	  return _react2.default.createElement(
-	    "div",
-	    { className: "page2" },
+	    'div',
+	    { className: 'home' },
 	    _react2.default.createElement(
-	      "h1",
-	      null,
-	      "Page2"
-	    ),
-	    _react2.default.createElement(
-	      "p",
-	      null,
-	      "You routed from Page 1 with username ",
-	      state.UserName
+	      'div',
+	      { className: 'homeBox' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        'Show User'
+	      ),
+	      _react2.default.createElement(
+	        'p',
+	        null,
+	        'Hi! ',
+	        state.UserName || "(Enter a userName in the form on Page 1)"
+	      ),
+	      _react2.default.createElement('img', { src: 'http://localhost:3000/jared.jpg', width: '400px' })
 	    )
 	  );
 	};
 
-	var Page3 = function Page3(_ref4) {
+	var Posts = function Posts(_ref4) {
 	  var state = _ref4.state;
 
 	  return _react2.default.createElement(
-	    "div",
-	    { className: "page3" },
+	    'div',
+	    { className: 'postPage' },
 	    _react2.default.createElement(
-	      "h1",
+	      'div',
+	      { className: 'postBox' },
+	      _react2.default.createElement(
+	        'h1',
+	        null,
+	        ' Posts '
+	      ),
+	      state.posts.map(function (message) {
+	        return [_react2.default.createElement(
+	          'div',
+	          { className: 'posts' },
+	          _react2.default.createElement(
+	            'h4',
+	            null,
+	            ' ',
+	            message.title
+	          ),
+	          _react2.default.createElement(
+	            'span',
+	            null,
+	            '~ ',
+	            message.user
+	          ),
+	          _react2.default.createElement(
+	            'p',
+	            null,
+	            message.body,
+	            ' '
+	          )
+	        )];
+	      })
+	    )
+	  );
+	};
+
+	var StateDisplay = function StateDisplay(_ref5) {
+	  var state = _ref5.state;
+	  var powers = _ref5.powers;
+
+	  var Postcode = _helper.library.json.prettyPrint(JSON.stringify(state.posts) || {});
+	  return _react2.default.createElement(
+	    'div',
+	    { className: 'display' },
+	    _react2.default.createElement(
+	      'h4',
 	      null,
-	      "Page3"
+	      'Application State Tool'
+	    ),
+	    _react2.default.createElement('hr', null),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      'UserName: ',
+	      _react2.default.createElement(
+	        'span',
+	        { className: 'func' },
+	        state.UserName
+	      ),
+	      ' '
 	    ),
 	    _react2.default.createElement(
-	      "h4",
+	      'p',
 	      null,
-	      "Good thing we loaded these posts already."
+	      'Posts: '
 	    ),
-	    state.posts.map(function (message) {
-	      return [_react2.default.createElement(
-	        "div",
-	        { className: "posts" },
-	        _react2.default.createElement(
-	          "h3",
-	          null,
-	          " ",
-	          message.title
-	        ),
-	        _react2.default.createElement(
-	          "div",
-	          null,
-	          message.body
-	        )
-	      )];
+	    state.posts.map(function (post) {
+	      return _react2.default.createElement(
+	        'p',
+	        { className: 'postStyle' },
+	        _helper.library.json.prettyPrint(JSON.stringify(post)).replace(/\"/g, "")
+	      );
+	    }),
+	    _react2.default.createElement(
+	      'p',
+	      null,
+	      'Powers: '
+	    ),
+	    Object.keys(powers).map(function (func) {
+	      return _react2.default.createElement(
+	        'p',
+	        { className: 'func' },
+	        func + '()'
+	      );
 	    })
 	  );
 	};
 
+	// <p>Powers: <code>{powers}</code></p>
+
+
 	exports.Home = Home;
 	exports.InputName = InputName;
-	exports.Page2 = Page2;
-	exports.Page1 = Page1;
-	exports.Page3 = Page3;
+	exports.ShowUser = ShowUser;
+	exports.NestedRoute = NestedRoute;
+	exports.Posts = Posts;
+	exports.StateDisplay = StateDisplay;
 	;
 
 	var _temp = function () {
@@ -21953,21 +22019,63 @@
 	    return;
 	  }
 
-	  __REACT_HOT_LOADER__.register(Home, "Home", "/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx");
+	  __REACT_HOT_LOADER__.register(Home, 'Home', '/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx');
 
-	  __REACT_HOT_LOADER__.register(InputName, "InputName", "/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx");
+	  __REACT_HOT_LOADER__.register(InputName, 'InputName', '/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx');
 
-	  __REACT_HOT_LOADER__.register(Page1, "Page1", "/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx");
+	  __REACT_HOT_LOADER__.register(NestedRoute, 'NestedRoute', '/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx');
 
-	  __REACT_HOT_LOADER__.register(Page2, "Page2", "/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx");
+	  __REACT_HOT_LOADER__.register(ShowUser, 'ShowUser', '/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx');
 
-	  __REACT_HOT_LOADER__.register(Page3, "Page3", "/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx");
+	  __REACT_HOT_LOADER__.register(Posts, 'Posts', '/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx');
+
+	  __REACT_HOT_LOADER__.register(StateDisplay, 'StateDisplay', '/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/components.jsx');
 	}();
 
 	;
 
 /***/ },
 /* 174 */
+/***/ function(module, exports) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	   value: true
+	});
+	if (!library) var library = {};
+
+	library.json = {
+	   replacer: function replacer(match, pIndent, pKey, pVal, pEnd) {
+	      var key = '<span class=json-key>';
+	      var val = '<span class=json-value>';
+	      var str = '<span class=json-string>';
+	      var r = pIndent || '';
+	      if (pKey) r = r + key + pKey.replace(/[": ]/g, '') + '</span>: ';
+	      if (pVal) r = r + (pVal[0] == '"' ? str : val) + pVal + '</span>';
+	      return r + (pEnd || '');
+	   },
+	   prettyPrint: function prettyPrint(obj) {
+	      var jsonLine = /^( *)("[\w]+": )?("[^"]*"|[\w.+-]*)?([,[{])?$/mg;
+	      return JSON.stringify(obj, null, 3).replace(/\\"/g, ' ');
+	   }
+	};
+
+	exports.library = library;
+	;
+
+	var _temp = function () {
+	   if (typeof __REACT_HOT_LOADER__ === 'undefined') {
+	      return;
+	   }
+
+	   __REACT_HOT_LOADER__.register(library, 'library', '/Users/kate/codesmith/DESKLAMP/desklamp_blog/components/helper.js');
+	}();
+
+	;
+
+/***/ },
+/* 175 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21982,9 +22090,12 @@
 
 	var _desklamp = __webpack_require__(172);
 
+	var _components = __webpack_require__(173);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	var Nav = function Nav(_ref) {
+	  var state = _ref.state;
 	  var powers = _ref.powers;
 	  return _react2.default.createElement(
 	    'nav',
@@ -21995,32 +22106,37 @@
 	      _react2.default.createElement(
 	        'li',
 	        null,
+	        ' ',
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'logo' },
+	          _react2.default.createElement('img', { src: 'http://www.desklamp.io/assets/lamp.png', width: '60px', className: 'navlogo' })
+	        )
+	      ),
+	      _react2.default.createElement(
+	        'li',
+	        null,
 	        _react2.default.createElement(_desklamp.Link, { view: '/home', tag: 'Home' })
 	      ),
 	      _react2.default.createElement(
 	        'li',
 	        null,
-	        _react2.default.createElement(_desklamp.Link, { view: '/home/page1', tag: 'Page 1' })
+	        _react2.default.createElement(_desklamp.Link, { view: '/home/nestedroute', tag: 'Nested' })
 	      ),
 	      _react2.default.createElement(
 	        'li',
 	        null,
-	        _react2.default.createElement(_desklamp.Link, { view: '/page2', tag: 'Page 2' })
+	        _react2.default.createElement(_desklamp.Link, { view: '/showuser', tag: 'ShowUser' })
 	      ),
 	      _react2.default.createElement(
 	        'li',
 	        null,
-	        _react2.default.createElement(_desklamp.AsyncLink, { view: '/page3', tag: 'Page 3', func: powers.getPosts })
-	      ),
-	      _react2.default.createElement(
-	        'a',
-	        { href: 'https://github.com/desklamp-js/desklamp' },
-	        'Desklamp\'s Github'
+	        _react2.default.createElement(_desklamp.AsyncLink, { view: '/posts', tag: 'Posts', func: powers.getPosts })
 	      )
-	    )
+	    ),
+	    _react2.default.createElement(_components.StateDisplay, { state: state, powers: powers })
 	  );
-	};
-
+	}; // import statements
 	var _default = Nav;
 	exports.default = _default;
 	;
