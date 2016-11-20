@@ -467,3 +467,16 @@ fieldset {
   background: #2d6f96;
   text-decoration: none;
 }
+
+.display{
+  float: right;
+  padding: 3%;
+  background-color: white;
+  min-width: 200px;
+  min-height: 200px;
+}
+
+.func{
+  font-size: .75em;
+  margin-left: 30%;
+}

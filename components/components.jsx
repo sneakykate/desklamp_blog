@@ -54,4 +54,24 @@ const Posts = ({ state }) => {
   );
 };
 
-export { Home, InputName, ShowState, NestedRoute, Posts };
+const StateDisplay = ({ state, powers }) => {
+  return (
+    <div className="display">
+      <p>UserName: </p>
+      <p className="func">{state.UserName}</p>
+      <p>Posts: </p>
+      <p className="func">{JSON.stringify(state.posts)}</p>
+      <p>Powers: </p>
+      {Object.keys(powers).map((func) => {
+        return (
+          <p className="func">{`${func}()`}</p>
+        );
+      })}
+    </div>
+  );
+};
+
+export { Home, InputName, ShowState, NestedRoute, Posts, StateDisplay };
+
+
+// <p>Powers: <code>{powers}</code></p>
