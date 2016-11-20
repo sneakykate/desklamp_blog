@@ -1,6 +1,7 @@
 import React from 'react';
 import {library} from './helper';
 
+// see blog tutorial here: https://medium.com/@sneakykate/react-routing-and-state-3-ways-part-3-desklamp-1facca96ac33#.q87b4ava9
 const Home = () => {
   return (
     <div className="home">
